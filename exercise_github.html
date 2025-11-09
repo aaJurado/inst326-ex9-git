@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercise 9: Git & GitHub — Worksheet</title>
+  <style>
+    :root {
+      --bg: #0f1220;
+      --card: #161a2b;
+      --ink: #e7e7f1;
+      --muted: #9aa0b4;
+      --accent: #7aa2f7;
+      --ok: #4ade80;
+      --warn: #f59e0b;
+    }
+    html, body { background: var(--bg); color: var(--ink); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; margin: 0; padding: 0; }
+    .wrap { max-width: 980px; margin: 48px auto; padding: 0 20px; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; margin-bottom: 18px; }
+    h1 { font-size: 1.8rem; margin: 0 0 12px; }
+    h2 { font-size: 1.2rem; margin: 24px 0 10px; color: var(--accent); }
+    h3 { font-size: 1rem; color: var(--muted); margin: 12px 0 6px; }
+    .inline { display:flex; gap: 12px; flex-wrap: wrap; }
+    .inline > .field { flex: 1 1 260px; }
+    .field label { display:block; font-size:.85rem; color: var(--muted); margin-bottom: 6px; }
+    .field input, .field textarea { width: 100%; background: var(--card); color: var(--ink); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 10px 12px; font-size: .98rem; }
+    .hint { color: var(--muted); font-size: .9rem; }
+    code, pre { background: #0b0e1a; color: #c7e4ff; border-radius: 10px; padding: 10px 12px; display: block; overflow:auto; }
+    ul.checklist { list-style: none; padding-left: 0; }
+    ul.checklist li::before { content: "☐"; margin-right: 8px; color: var(--warn); }
+    .ok::before { content:"✔"; color: var(--ok); }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:12px; }
+    .screenshot-box { border:1px dashed rgba(255,255,255,.18); border-radius:12px; padding: 12px; }
+    .footer { text-align:center; color: var(--muted); font-size: .85rem; margin-top: 26px; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Exercise 9: Git & GitHub — Submission Worksheet</h1>
+      <p class="hint">Fill this out and submit a screenshot of your Git history (see Section 4). Last edited: 2025-11-09 17:34</p>
+      <div class="inline">
+        <div class="field">
+          <label>Primary Student (you)</label>
+          <input placeholder="Full name (e.g., Axel Lucero)">
+        </div>
+        <div class="field">
+          <label>TerpMail / Email</label>
+          <input placeholder="you@terpmail.umd.edu">
+        </div>
+      </div>
+      <div class="inline">
+        <div class="field">
+          <label>Partner(s) (optional)</label>
+          <input placeholder="List names or write 'Solo'">
+        </div>
+        <div class="field">
+          <label>Repository URL</label>
+          <input placeholder="https://github.com/username/reponame">
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>1) Setup</h2>
+      <ul class="checklist">
+        <li>Configured Git username and email on my computer</li>
+        <li>Created a new GitHub repo (or forked/cloned the starter)</li>
+        <li>Cloned the repo locally</li>
+      </ul>
+      <h3>Commands I ran</h3>
+      <pre>
+git config --global user.name "Your Name"
+git config --global user.email "you@terpmail.umd.edu"
+
+# Create a repo on GitHub first, then:
+git clone &lt;repo-url&gt;
+cd &lt;repo-folder&gt;
+      </pre>
+      <p class="hint">Tip (first-time auth): If push fails, run <code>gh auth login</code> (GitHub CLI) or set up a personal access token.</p>
+    </div>
+
+    <div class="card">
+      <h2>2) Make & Track Changes</h2>
+      <div class="grid">
+        <div>
+          <h3>What I changed</h3>
+          <textarea rows="6" placeholder="- Added README notes&#10;- Edited exercise_github.html&#10;- Created a new branch..."></textarea>
+        </div>
+        <div>
+          <h3>My commit messages</h3>
+          <textarea rows="6" placeholder='e.g., "feat: add setup section", "fix: typo in instructions"'></textarea>
+        </div>
+      </div>
+      <h3>Typical workflow</h3>
+      <pre>
+git status
+git add .
+git commit -m "clear, meaningful message"
+git push -u origin main
+      </pre>
+    </div>
+
+    <div class="card">
+      <h2>3) Branching & Merging (Recommended)</h2>
+      <p class="hint">If working with partners, each person should contribute at least one commit.</p>
+      <pre>
+git checkout -b feature/your-name-section
+# edit files...
+git add .
+git commit -m "add my section"
+git push -u origin feature/your-name-section
+
+# Open a Pull Request on GitHub and merge it.
+# OR, locally:
+git checkout main
+git pull
+git merge feature/your-name-section
+git push
+      </pre>
+      <h3>Merge conflict? Resolve it like this</h3>
+      <pre>
+# Open the file with conflict markers &lt;&lt;&lt;&lt;&lt;&lt;&lt; ======= &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+# Keep the correct lines, delete markers, save.
+git add &lt;file&gt;
+git commit -m "resolve merge conflict in &lt;file&gt;"
+git push
+      </pre>
+    </div>
+
+    <div class="card">
+      <h2>4) Capture Your Git History (REQUIRED)</h2>
+      <p>Run one of the following and take a screenshot of your terminal output. Make sure your <b>name</b> and <b>recent commits</b> are visible.</p>
+      <pre>
+# Clean, compact history (recommended)
+git log --oneline --graph --decorate --all --date=short --pretty=format:"%h %ad %an %d %s"
+
+# Or include files changed
+git log --date=short --pretty=format:"%h %ad %an %s" --name-status -n 20
+
+# Verify authorship of your commits
+git log --author="Your Name" --oneline -n 10
+      </pre>
+      <div class="grid">
+        <div class="screenshot-box">
+          <h3>Screenshot 1 — Graph view</h3>
+          <p class="hint">Attach on ELMS. Make sure your terminal shows your commits.</p>
+        </div>
+        <div class="screenshot-box">
+          <h3>Screenshot 2 — Optional extra</h3>
+          <p class="hint">e.g., <code>git log --name-status -n 20</code> or your Pull Request page.</p>
+        </div>
+      </div>
+      <h3>How to take a screenshot</h3>
+      <ul>
+        <li><b>Windows</b>: Win+Shift+S → drag to select → paste/save from the Snipping Tool.</li>
+        <li><b>macOS</b>: Shift+Cmd+4 → drag to select → file saves to desktop.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>5) Short Reflection</h2>
+      <div class="grid">
+        <div class="field">
+          <label>What worked well?</label>
+          <textarea rows="5" placeholder="e.g., Branching made it easier to avoid conflicts"></textarea>
+        </div>
+        <div class="field">
+          <label>What tripped you up?</label>
+          <textarea rows="5" placeholder="e.g., Credential issues on first push; solved with PAT"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Quick Fixes (Common Issues)</h2>
+      <pre>
+# Set default branch name (if needed)
+git config --global init.defaultBranch main
+
+# Link local repo to GitHub if 'origin' is missing
+git remote add origin &lt;repo-url&gt;
+
+# First push and set upstream
+git push -u origin main
+
+# Pull the latest before you merge
+git pull --rebase
+
+# Stash local changes temporarily
+git stash
+git pull
+git stash pop
+
+# Fix "Permission denied (publickey)"
+# Use HTTPS repo URL or add SSH key: https://github.com/settings/keys
+      </pre>
+    </div>
+
+    <div class="footer">
+      <p>Made for INST 326 • Turn this in with your Git history screenshot on ELMS.</p>
+    </div>
+  </div>
+</body>
+</html>
